@@ -435,15 +435,228 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
   max-width: 36ch;
 }
 
+/* ---------- Formación y tecnologías ---------- */
+.formacion,
 .tecnologias {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem 1rem;
+  position: relative;
+  isolation: isolate;
+  padding: var(--espacio-arriba) var(--gutter) var(--espacio-abajo) var(--contenido-izq);
+}
+
+.formacion::before,
+.tecnologias::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--resplandor-seccion);
+}
+
+/* Tamaño fijo y lejos de los bordes para que no se note el corte con la sección vecina */
+.formacion {
+  --resplandor-seccion: radial-gradient(45rem 26rem at 80% 40%, rgb(242 165 65 / 0.12), transparent 70%);
+}
+
+.tecnologias {
+  --resplandor-seccion: radial-gradient(40rem 24rem at 20% 55%, rgb(103 232 249 / 0.08), transparent 70%);
+  padding-top: 0;
+}
+
+/* La formación es una mini ruta: la línea avanza con el scroll y enciende cada parada */
+.linea-tiempo {
+  --avance: 1;
+  --punto-hito: 16px;
+  position: relative;
+  max-width: 72rem;
+  margin-top: clamp(2rem, 6vh, 4rem);
+}
+
+.linea-tiempo__base,
+.linea-tiempo__trazo {
+  position: absolute;
+  top: calc(var(--punto-hito) / 2 - 1px);
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+
+.linea-tiempo__base {
+  background: rgb(237 234 246 / 0.18);
+}
+
+.linea-tiempo__trazo {
+  background: var(--ambar);
+  transform: scaleX(var(--avance));
+  transform-origin: left;
+}
+
+.linea-tiempo__hitos {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.75rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-weight: 500;
 }
+
+.hito {
+  position: relative;
+  padding-top: calc(var(--punto-hito) + 1.25rem);
+}
+
+.hito__punto {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--punto-hito);
+  height: var(--punto-hito);
+  border: 2px solid var(--ambar);
+  border-radius: 50%;
+  background: var(--ambar);
+  box-shadow: 0 0 0 6px rgb(242 165 65 / 0.15);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.con-movimiento .hito__punto {
+  background: var(--tinta);
+  box-shadow: none;
+}
+
+.con-movimiento .hito--alcanzado .hito__punto {
+  background: var(--ambar);
+  box-shadow: 0 0 0 6px rgb(242 165 65 / 0.15);
+}
+
+.hito__fecha {
+  margin-bottom: 0.4rem;
+  color: var(--ambar);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.hito__nombre {
+  font-family: var(--fuente-display);
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.hito--titulo .hito__nombre {
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+}
+
+.hito__lugar {
+  margin-top: 0.4rem;
+  opacity: 0.8;
+}
+
+.hito__tipo {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.15rem 0.65rem;
+  border: 1px solid rgb(237 234 246 / 0.3);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.hito__tipo--actual {
+  border-color: var(--ambar);
+  background: var(--ambar);
+  color: var(--tinta);
+}
+
+@media (max-width: 1100px) {
+  .linea-tiempo__hitos {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+    padding-left: 2.25rem;
+  }
+
+  .linea-tiempo__base,
+  .linea-tiempo__trazo {
+    top: 0;
+    bottom: 0;
+    left: calc(var(--punto-hito) / 2 - 1px);
+    right: auto;
+    width: 2px;
+    height: auto;
+  }
+
+  .linea-tiempo__trazo {
+    transform: scaleY(var(--avance));
+    transform-origin: top;
+  }
+
+  .hito {
+    padding-top: 0;
+  }
+
+  .hito__punto {
+    top: 0.15rem;
+    left: -2.25rem;
+  }
+}
+
+/* Tecnologías: tarjetas con el logo en el color de cada marca */
+.tecnologias__intro {
+  max-width: 50ch;
+  margin-top: -1rem;
+  opacity: 0.85;
+}
+
+.tecnologias__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 1rem;
+  max-width: 72rem;
+  margin: clamp(2rem, 5vh, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.5rem 1rem 1.25rem;
+  border: 1px solid rgb(237 234 246 / 0.12);
+  border-radius: 16px;
+  background: rgb(237 234 246 / 0.04);
+}
+
+.tec__logo {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 14px;
+  background: var(--marca);
+  box-shadow: 0 10px 28px -8px var(--brillo, var(--marca));
+}
+
+.tec__logo img {
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.tec__nombre {
+  font-weight: 600;
+}
+
+/* Colores de marca, los mismos de los botones del README del perfil */
+.tec--dotnet { --marca: #512BD4; }
+.tec--javascript { --marca: #F7DF1E; }
+.tec--php { --marca: #777BB4; }
+.tec--laravel { --marca: #FF2D20; }
+.tec--node { --marca: #339933; }
+.tec--react { --marca: #20232A; --brillo: #61DAFB; }
+.tec--html { --marca: #E34F26; }
+.tec--css { --marca: #1572B6; }
+.tec--sql { --marca: #336791; }
+.tec--python { --marca: #3776AB; }
+.tec--git { --marca: #F05032; }
 
 /* ---------- Proyectos ---------- */
 .proyectos__cabecera {

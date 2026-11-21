@@ -198,6 +198,40 @@
     };
   }
 
+  function animarFormacion() {
+    const linea = document.querySelector(".linea-tiempo");
+    const hitos = [...linea.querySelectorAll(".hito")];
+    linea.style.setProperty("--avance", "0");
+
+    ScrollTrigger.create({
+      trigger: linea,
+      start: "top 75%",
+      end: "bottom 45%",
+      onUpdate: (self) => {
+        linea.style.setProperty("--avance", self.progress.toFixed(3));
+        hitos.forEach((hito, i) => hito.classList.toggle("hito--alcanzado", self.progress >= i / (hitos.length - 1) - 0.001));
+      }
+    });
+
+    return () => {
+      linea.style.removeProperty("--avance");
+      hitos.forEach((hito) => hito.classList.remove("hito--alcanzado"));
+    };
+  }
+
+  // Las tarjetas aparecen en secuencia una sola vez al entrar la sección
+  function animarTecnologias() {
+    gsap.from(".tec", {
+      opacity: 0,
+      y: 24,
+      scale: 0.92,
+      duration: 0.5,
+      ease: "power2.out",
+      stagger: 0.05,
+      scrollTrigger: { trigger: ".tecnologias__grid", start: "top 80%", toggleActions: "play none none reverse" }
+    });
+  }
+
   function animarEscenas() {
     document.querySelectorAll(".escena").forEach((escena) => {
       gsap.fromTo(
@@ -254,10 +288,13 @@
       animarInicio();
       animarColores();
       const limpiarRuta = animarRuta();
+      const limpiarFormacion = animarFormacion();
+      animarTecnologias();
       animarEscenas();
 
       return () => {
         limpiarRuta();
+        limpiarFormacion();
         raiz.classList.remove("con-movimiento");
       };
     });
