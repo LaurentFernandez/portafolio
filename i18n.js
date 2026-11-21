@@ -45,6 +45,8 @@
     "contact.text": "I'm open to job offers and freelance projects.",
     "contact.write": "Email me",
     "contact.copy": "Copy email",
+    "contact.cv": "Download résumé",
+    "contact.cvFile": "cv/Laurent-Fernandez-CV-EN.pdf",
     "contact.copied": "Email copied",
     "contact.copyFailed": "Couldn't copy. Select the address and copy it manually."
   };

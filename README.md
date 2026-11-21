@@ -19,6 +19,19 @@ Abre `index.html` en el navegador o usa la extensión **Live Server** de VS Code
 
 Si el sistema del visitante tiene activado "reducir movimiento", o si GSAP no carga, la página se muestra completa y sin animaciones.
 
+## Hoja de vida
+
+El CV vive en `cv/` en español e inglés (`cv-es.html`, `cv-en.html`, estilos en `cv.css`). Después de editarlo, vuelve a generar los PDF:
+
+```powershell
+$chrome = 'C:\Program Files\Google\Chrome\Application\chrome.exe'
+foreach ($l in 'es','en') {
+  & $chrome --headless=new --no-pdf-header-footer --virtual-time-budget=8000 "--print-to-pdf=$PWD\cv\Laurent-Fernandez-CV-$($l.ToUpper()).pdf" "file:///$PWD/cv/cv-$l.html"
+}
+```
+
+También puedes abrir el HTML en el navegador y usar Imprimir → Guardar como PDF (tamaño A4, sin encabezados).
+
 ## Agregar o editar un proyecto
 
 1. Copia un bloque `<article class="escena">` en `index.html` y cambia el texto.
