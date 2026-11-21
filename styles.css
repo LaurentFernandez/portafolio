@@ -3,15 +3,19 @@
   --tinta: #1B1A3A;
   --papel: #EDEAF6;
   --ambar: #F2A541;
-  --senal: #2EC4B6;
-  --coral: #FF6F61;
   --lima: #B8E05A;
+
+  /* Colores base tomados de los sitios de cada proyecto */
+  --kura: #0A2540;
+  --gps: #0B1426;
+  --kaz: #3D7A12;
 
   --fondo: var(--tinta);
   --texto: var(--papel);
 
   --fuente-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
   --fuente-texto: "Hanken Grotesk", system-ui, sans-serif;
+  --fuente-marca: "Inter", system-ui, sans-serif;
 
   --t-base: 1.0625rem;
   --t-2: clamp(1.25rem, 2vw, 1.6rem);
@@ -175,10 +179,10 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
 
 [data-fondo="tinta"] { --fondo: var(--tinta); }
 [data-fondo="papel"] { --fondo: var(--papel); }
-[data-fondo="ambar"] { --fondo: var(--ambar); }
-[data-fondo="senal"] { --fondo: var(--senal); }
-[data-fondo="coral"] { --fondo: var(--coral); }
 [data-fondo="lima"] { --fondo: var(--lima); }
+[data-fondo="kura"] { --fondo: var(--kura); }
+[data-fondo="gps"] { --fondo: var(--gps); }
+[data-fondo="kaz"] { --fondo: var(--kaz); }
 [data-texto="tinta"] { --texto: var(--tinta); }
 [data-texto="papel"] { --texto: var(--papel); }
 
@@ -224,13 +228,63 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
   font-weight: 900;
 }
 
-.inicio__velo {
+/* La foto se muestra a un tamaño cercano al del archivo (1024 px) para que no se pixele.
+   Solo aparece con animaciones; sin ellas, la foto se ve dentro de las letras. */
+/* Se centra con márgenes y no con translate, porque GSAP reemplaza translate al animar. */
+.inicio__retrato {
+  --ancho-retrato: min(36vw, 30rem);
+  display: none;
   position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgb(27 26 58 / 0.7), transparent 18%),
-    linear-gradient(to top, var(--tinta), transparent 50%);
-  opacity: 0;
+  top: 50%;
+  right: calc(var(--gutter) * 2);
+  width: var(--ancho-retrato);
+  aspect-ratio: 4 / 5;
+  margin: calc(var(--ancho-retrato) * -0.625) 0 0;
+}
+
+.inicio__retrato img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.con-movimiento .inicio__retrato {
+  display: block;
+}
+
+/* Con animaciones, el nombre aparece junto a la foto al final de la apertura */
+.con-movimiento .inicio__titulo {
+  position: absolute;
+  top: 26%;
+  left: var(--gutter);
+  width: min-content;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  white-space: normal;
+  font-family: var(--fuente-display);
+  font-weight: 900;
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.9;
+}
+
+@media (orientation: portrait) {
+  .inicio__retrato {
+    --ancho-retrato: min(72vw, 22rem);
+    top: 13%;
+    right: auto;
+    left: 50%;
+    margin: 0 0 0 calc(var(--ancho-retrato) / -2);
+  }
+
+  .con-movimiento .inicio__titulo {
+    top: auto;
+    bottom: 6.5rem;
+    width: auto;
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
 }
 
 .inicio__rol {
@@ -453,6 +507,118 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
 .con-movimiento .motivo > * {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
+}
+
+/* ---------- Escenas con el estilo de cada proyecto ----------
+   Cada una copia la identidad de su sitio: fondo, color de acento y tarjetas.
+   El fondo vive en .escena__mundo para poder revelarlo con una transición. */
+.escena--marca {
+  isolation: isolate;
+  font-family: var(--fuente-marca);
+}
+
+.escena__mundo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--mundo);
+}
+
+.escena--marca .escena__nombre {
+  padding-bottom: 0.12em;
+  font-family: var(--fuente-marca);
+  font-weight: 800;
+  font-size: var(--t-marca, var(--t-gigante));
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+  text-transform: none;
+}
+
+.escena--marca .escena__tipo {
+  color: var(--acento);
+}
+
+.escena--marca .ficha {
+  gap: 0;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--borde-tarjeta);
+  border-radius: 14px;
+  background: var(--tarjeta);
+  backdrop-filter: blur(8px);
+}
+
+.escena--marca .ficha div {
+  padding: 0.75rem 0;
+  border-top-color: var(--borde-tarjeta);
+}
+
+.escena--marca .ficha div:first-child {
+  border-top: none;
+}
+
+.escena--marca .motivo {
+  stroke: var(--acento);
+}
+
+/* Kurabi: azul océano con resplandor radial y un arco de fondo, como kurabi.tech */
+.escena--kurabi {
+  --acento: #22D3EE;
+  --tarjeta: rgb(255 255 255 / 0.04);
+  --borde-tarjeta: rgb(56 189 248 / 0.28);
+  --mundo: radial-gradient(circle at 75% 45%, #134A7C 0%, var(--kura) 45%, #061829 100%);
+  --t-marca: clamp(4rem, 16vw, 14rem);
+}
+
+.escena--kurabi .escena__mundo::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -25vmax;
+  width: 75vmax;
+  aspect-ratio: 1;
+  border: 2px solid rgb(56 189 248 / 0.1);
+  border-radius: 50%;
+  translate: 0 -50%;
+}
+
+.escena--kurabi .escena__nombre {
+  background: linear-gradient(90deg, #fff 30%, #7DD3FC 65%, var(--acento));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* GPSIntegra: azul marino con puntos tipo constelación y cian con brillo, como gpsintegra.com */
+.escena--gps {
+  --acento: #67E8F9;
+  --tarjeta: rgb(30 41 59 / 0.55);
+  --borde-tarjeta: rgb(148 163 184 / 0.25);
+  --mundo:
+    radial-gradient(circle at 78% 30%, rgb(6 182 212 / 0.22), transparent 45%),
+    radial-gradient(rgb(148 163 184 / 0.35) 1px, transparent 1.6px) 0 0 / 44px 44px,
+    var(--gps);
+  --t-marca: clamp(3rem, 12.5vw, 11.5rem);
+}
+
+.escena__acento {
+  color: var(--acento);
+}
+
+.escena--gps .motivo {
+  filter: drop-shadow(0 0 8px rgb(103 232 249 / 0.6));
+}
+
+/* Kas: degradado verde con cuadrícula y tarjetas de vidrio, como kaz-inspector.com */
+.escena--kas {
+  --acento: #D9F99D;
+  --tarjeta: rgb(255 255 255 / 0.1);
+  --borde-tarjeta: rgb(255 255 255 / 0.28);
+  --mundo:
+    linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(135deg, #2E6A0E 0%, #4C9714 55%, #74B81F 100%);
+  --t-marca: clamp(5rem, 22vw, 18rem);
 }
 
 /* ---------- Contacto ---------- */

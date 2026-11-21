@@ -12,7 +12,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&family=Inter:wght@400;600;800&display=swap">
   <link rel="preload" as="image" href="assets/img/laurent.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -34,7 +34,7 @@
 
   <main id="contenido">
     <section id="inicio" class="inicio" data-fondo="tinta" data-texto="papel">
-      <h1 class="sr-only">Laurent Andrés Fernandez</h1>
+      <h1 class="sr-only inicio__titulo">Laurent Andrés Fernandez</h1>
 
       <svg class="inicio__mascara inicio__mascara--ancha" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" data-centro="430" aria-hidden="true" focusable="false">
         <defs>
@@ -44,11 +44,10 @@
               <text class="inicio__linea" x="800" y="500" font-size="467" text-anchor="middle">LAURENT</text>
               <text class="inicio__linea" x="800" y="700" font-size="210" text-anchor="middle">ANDRÉS FERNANDEZ</text>
             </g>
-            <rect class="inicio__relleno" width="1600" height="900" fill="#fff" opacity="0" />
           </mask>
         </defs>
         <g mask="url(#mascara-ancha)">
-          <image class="inicio__foto" href="assets/img/laurent.jpg" x="0" y="0" width="1600" height="1600" preserveAspectRatio="xMidYMid slice" />
+          <image href="assets/img/laurent.jpg" x="0" y="0" width="1600" height="1600" preserveAspectRatio="xMidYMid slice" />
         </g>
       </svg>
 
@@ -61,15 +60,16 @@
               <text class="inicio__linea" x="450" y="700" font-size="306" text-anchor="middle">ANDRÉS</text>
               <text class="inicio__linea" x="450" y="900" font-size="204" text-anchor="middle">FERNANDEZ</text>
             </g>
-            <rect class="inicio__relleno" width="900" height="1600" fill="#fff" opacity="0" />
           </mask>
         </defs>
         <g mask="url(#mascara-alta)">
-          <image class="inicio__foto" href="assets/img/laurent.jpg" x="-350" y="0" width="1600" height="1600" preserveAspectRatio="xMidYMid slice" />
+          <image href="assets/img/laurent.jpg" x="-350" y="0" width="1600" height="1600" preserveAspectRatio="xMidYMid slice" />
         </g>
       </svg>
 
-      <div class="inicio__velo" aria-hidden="true"></div>
+      <figure class="inicio__retrato">
+        <img src="assets/img/laurent.jpg" width="1024" height="1024" alt="Foto de Laurent Andrés Fernandez" data-i18n-attr="alt:hero.photoAlt">
+      </figure>
       <p class="inicio__rol" data-i18n="hero.role">Ingeniero de software</p>
     </section>
 
@@ -120,7 +120,8 @@
           <p class="nota" data-i18n="projects.note">Kurabi, GPSIntegra y Kas son sistemas de NyGsoft S.A.S. y de sus clientes. Aquí describo mi participación en ellos.</p>
         </div>
 
-        <article class="escena" data-fondo="coral" data-texto="tinta">
+        <article class="escena escena--marca escena--kurabi" data-fondo="kura" data-texto="papel">
+          <div class="escena__mundo" aria-hidden="true"></div>
           <div class="escena__titulo"><h3 class="escena__nombre">Kurabi</h3></div>
           <div class="escena__cuerpo">
             <span class="parada" aria-hidden="true"></span>
@@ -135,8 +136,9 @@
           </svg>
         </article>
 
-        <article class="escena" data-fondo="senal" data-texto="tinta">
-          <div class="escena__titulo"><h3 class="escena__nombre">GPSIntegra</h3></div>
+        <article class="escena escena--marca escena--gps" data-fondo="gps" data-texto="papel">
+          <div class="escena__mundo" aria-hidden="true"></div>
+          <div class="escena__titulo"><h3 class="escena__nombre">GPS<span class="escena__acento">Integra</span></h3></div>
           <div class="escena__cuerpo">
             <span class="parada" aria-hidden="true"></span>
             <p class="escena__tipo" data-i18n="gps.type">Sistema de rastreo GPS</p>
@@ -152,7 +154,8 @@
           </svg>
         </article>
 
-        <article class="escena" data-fondo="ambar" data-texto="tinta">
+        <article class="escena escena--marca escena--kas" data-fondo="kaz" data-texto="papel">
+          <div class="escena__mundo" aria-hidden="true"></div>
           <div class="escena__titulo"><h3 class="escena__nombre">Kas</h3></div>
           <div class="escena__cuerpo">
             <span class="parada" aria-hidden="true"></span>

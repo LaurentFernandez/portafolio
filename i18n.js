@@ -11,6 +11,7 @@
     "nav.contact": "Contact",
     "lang.switch": "Switch to Spanish",
     "hero.role": "Software engineer",
+    "hero.photoAlt": "Photo of Laurent Andrés Fernandez",
     "about.title": "About me",
     "about.lead": "I'm a software engineer at NyGsoft S.A.S., a Colombian custom software company. Before that I worked as a .NET developer and as a QA analyst. I take part in projects from requirements gathering through development.",
     "about.analysis.t": "Analysis",

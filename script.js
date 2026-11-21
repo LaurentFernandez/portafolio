@@ -98,26 +98,31 @@
   }
 
   function animarInicio() {
+    // Las letras crecen y se desvanecen mientras aparece la foto en su marco
     const linea = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
         trigger: ".inicio",
         start: "top top",
-        end: "+=130%",
+        end: "+=110%",
         scrub: 0.6,
         pin: true
       }
     });
 
     mascaras.forEach((svg) => {
-      const origen = centroDe(svg);
-      linea
-        .to(svg.querySelector(".inicio__letras"), { scale: 3, svgOrigin: origen, duration: 1, ease: "power2.in" }, 0)
-        .fromTo(svg.querySelector(".inicio__foto"), { scale: 1.12, svgOrigin: origen }, { scale: 1, svgOrigin: origen, duration: 1 }, 0)
-        .to(svg.querySelector(".inicio__relleno"), { opacity: 1, duration: 0.55, ease: "power1.in" }, 0.35);
+      linea.to(svg.querySelector(".inicio__letras"), { scale: 1.3, svgOrigin: centroDe(svg), duration: 1, ease: "power1.in" }, 0);
     });
 
-    linea.to(".inicio__velo", { opacity: 1, duration: 0.4 }, 0.6);
+    linea
+      .to(".inicio__mascara", { opacity: 0, duration: 0.45 }, 0.3)
+      .fromTo(
+        ".inicio__retrato",
+        { opacity: 0, scale: 0.8, yPercent: 8 },
+        { opacity: 1, scale: 1, yPercent: 0, duration: 0.6, ease: "power2.out" },
+        0.4
+      )
+      .fromTo(".inicio__titulo", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.5);
   }
 
   function animarColores() {
@@ -212,6 +217,20 @@
           scrollTrigger: { trigger: escena, start: "top bottom", end: "bottom top", scrub: true }
         }
       );
+
+      // El mundo de cada proyecto se abre en círculo desde la parada de la ruta
+      const mundo = escena.querySelector(".escena__mundo");
+      if (mundo) {
+        gsap.fromTo(
+          mundo,
+          { clipPath: "circle(0% at 3% 55%)" },
+          {
+            clipPath: "circle(150% at 3% 55%)",
+            ease: "power2.in",
+            scrollTrigger: { trigger: escena, start: "top 90%", end: "top 10%", scrub: true }
+          }
+        );
+      }
 
       const trazos = escena.querySelectorAll(".motivo > *");
       if (!trazos.length) return;

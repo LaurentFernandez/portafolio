@@ -35,5 +35,5 @@ También puedes abrir el HTML en el navegador y usar Imprimir → Guardar como P
 ## Agregar o editar un proyecto
 
 1. Copia un bloque `<article class="escena">` en `index.html` y cambia el texto.
-2. Elige su color con `data-fondo` (`coral`, `senal`, `ambar`, `lima`, `papel` o `tinta`).
+2. Elige su color con `data-fondo` (`lima`, `papel` o `tinta`). Para darle el estilo propio de un sitio, sigue el patrón de `escena--kurabi`, `escena--gps` y `escena--kas` en `styles.css`: un `div.escena__mundo` para el fondo y variables `--acento`, `--tarjeta`, `--borde-tarjeta` y `--mundo`.
 3. Agrega las traducciones de sus claves `data-i18n` en `i18n.js`.
