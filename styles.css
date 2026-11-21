@@ -657,6 +657,7 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
 .tec--sql { --marca: #336791; }
 .tec--python { --marca: #3776AB; }
 .tec--git { --marca: #F05032; }
+.tec--claude { --marca: #D97757; }
 
 /* ---------- Proyectos ---------- */
 .proyectos__cabecera {
