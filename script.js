@@ -98,7 +98,7 @@
   }
 
   function animarInicio() {
-    // Las letras crecen y se desvanecen mientras aparece la foto en su marco
+    // Las letras crecen y se desvanecen; se dibujan las curvas y aparece la foto recortada
     const linea = gsap.timeline({
       defaults: { ease: "none" },
       scrollTrigger: {
@@ -116,10 +116,12 @@
 
     linea
       .to(".inicio__mascara", { opacity: 0, duration: 0.45 }, 0.3)
+      .fromTo(".inicio__resplandor", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.35)
+      .to(".inicio__curvas path", { strokeDashoffset: 0, duration: 0.6, stagger: 0.04 }, 0.35)
       .fromTo(
-        ".inicio__retrato",
-        { opacity: 0, scale: 0.8, yPercent: 8 },
-        { opacity: 1, scale: 1, yPercent: 0, duration: 0.6, ease: "power2.out" },
+        ".inicio__foto",
+        { opacity: 0, yPercent: 10 },
+        { opacity: 1, yPercent: 0, duration: 0.55, ease: "power2.out" },
         0.4
       )
       .fromTo(".inicio__titulo", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 0.5);

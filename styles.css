@@ -228,39 +228,26 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
   font-weight: 900;
 }
 
-/* La foto se muestra a un tamaño cercano al del archivo (1024 px) para que no se pixele.
-   Solo aparece con animaciones; sin ellas, la foto se ve dentro de las letras. */
-/* Se centra con márgenes y no con translate, porque GSAP reemplaza translate al animar. */
-.inicio__retrato {
-  --ancho-retrato: min(36vw, 30rem);
-  display: none;
+/* Nombre y cargo. Sin animaciones solo se ve el cargo abajo (el nombre está en las letras);
+   con animaciones el nombre aparece en grande junto a la foto. */
+.inicio__presentacion {
   position: absolute;
-  top: 50%;
-  right: calc(var(--gutter) * 2);
-  width: var(--ancho-retrato);
-  aspect-ratio: 4 / 5;
-  margin: calc(var(--ancho-retrato) * -0.625) 0 0;
-}
-
-.inicio__retrato img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 20%;
-}
-
-.con-movimiento .inicio__retrato {
-  display: block;
-}
-
-/* Con animaciones, el nombre aparece junto a la foto al final de la apertura */
-.con-movimiento .inicio__titulo {
-  position: absolute;
-  top: 26%;
   left: var(--gutter);
+  bottom: clamp(1.5rem, 5vh, 3rem);
+  z-index: 1;
+}
+
+.con-movimiento .inicio__presentacion {
+  top: 50%;
+  bottom: auto;
+  translate: 0 -50%;
+}
+
+.con-movimiento .inicio__titulo {
+  position: static;
   width: min-content;
   height: auto;
+  margin-bottom: 1.5rem;
   overflow: visible;
   clip-path: none;
   white-space: normal;
@@ -270,31 +257,91 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
   line-height: 0.9;
 }
 
-@media (orientation: portrait) {
-  .inicio__retrato {
-    --ancho-retrato: min(72vw, 22rem);
-    top: 13%;
-    right: auto;
-    left: 50%;
-    margin: 0 0 0 calc(var(--ancho-retrato) / -2);
-  }
-
-  .con-movimiento .inicio__titulo {
-    top: auto;
-    bottom: 6.5rem;
-    width: auto;
-    font-size: clamp(2.5rem, 11vw, 3.5rem);
-  }
-}
-
 .inicio__rol {
-  position: absolute;
-  left: var(--gutter);
-  bottom: clamp(1.5rem, 5vh, 3rem);
   max-width: 22ch;
   font-size: var(--t-2);
   font-weight: 500;
   line-height: 1.3;
+}
+
+/* Foto recortada, apoyada en el borde inferior. Se muestra a su tamaño o menos
+   (el archivo mide 548 x 930 px) para que se vea nítida. */
+.inicio__figura {
+  --alto-figura: min(88svh, 58rem);
+  display: none;
+  position: absolute;
+  right: clamp(1rem, 7vw, 8rem);
+  bottom: 0;
+  height: var(--alto-figura);
+  aspect-ratio: 548 / 930;
+}
+
+.con-movimiento .inicio__figura {
+  display: block;
+}
+
+.inicio__foto {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.inicio__resplandor {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  width: 190%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(242 165 65 / 0.3), transparent 62%);
+  translate: -50% -50%;
+}
+
+/* Curvas de nivel, como un mapa topográfico: la "ruta" ámbar resalta entre ellas */
+.inicio__curvas {
+  position: absolute;
+  top: 24%;
+  left: 50%;
+  width: 270%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--papel);
+  stroke-opacity: 0.16;
+  stroke-width: 1.4;
+  translate: -50% -50%;
+}
+
+.inicio__curvas .inicio__curva--ruta {
+  stroke: var(--ambar);
+  stroke-opacity: 0.8;
+  stroke-width: 1.8;
+}
+
+.con-movimiento .inicio__curvas path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+@media (orientation: portrait) {
+  .inicio__figura {
+    --alto-figura: min(60svh, 34rem);
+    right: auto;
+    left: 50%;
+    translate: -50% 0;
+  }
+
+  .con-movimiento .inicio__presentacion {
+    top: 13%;
+    right: var(--gutter);
+    translate: none;
+  }
+
+  .con-movimiento .inicio__titulo {
+    width: auto;
+    margin-bottom: 0.75rem;
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
 }
 
 /* ---------- Recorrido y ruta ---------- */
