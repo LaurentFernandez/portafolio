@@ -1,4 +1,4 @@
-# Portafolio de Laurent Andrés Fernández
+# Portafolio de Laurent Andrés Fernandez
 
 Sitio personal en HTML, CSS y JavaScript, sin proceso de build. Las transiciones al hacer scroll usan [GSAP](https://gsap.com/) con ScrollTrigger (copia local en `assets/vendor/`).
 

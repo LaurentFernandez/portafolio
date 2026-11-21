@@ -2,17 +2,17 @@
 // y los textos que se generan desde JavaScript.
 (function () {
   const EN = {
-    "meta.title": "Laurent Andrés Fernández | Software analyst and developer",
-    "meta.description": "Portfolio of Laurent Andrés Fernández, software analyst and developer at NyGsoft S.A.S.",
+    "meta.title": "Laurent Andrés Fernandez | Software engineer",
+    "meta.description": "Portfolio of Laurent Andrés Fernandez, software engineer at NyGsoft S.A.S.",
     "skip": "Skip to content",
     "nav.label": "Main",
     "nav.about": "About",
     "nav.projects": "Projects",
     "nav.contact": "Contact",
     "lang.switch": "Switch to Spanish",
-    "hero.role": "Software analyst and developer",
+    "hero.role": "Software engineer",
     "about.title": "About me",
-    "about.lead": "I'm a software analyst and developer at NyGsoft S.A.S., a Colombian custom software company. I take part in projects from requirements gathering through development.",
+    "about.lead": "I'm a software engineer at NyGsoft S.A.S., a Colombian custom software company. Before that I worked as a .NET developer and as a QA analyst. I take part in projects from requirements gathering through development.",
     "about.analysis.t": "Analysis",
     "about.analysis.d": "Requirements gathering and analysis, modeling and solution documentation.",
     "about.dev.t": "Development",
