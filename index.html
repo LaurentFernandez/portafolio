@@ -3,75 +3,236 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Andrés | Portafolio</title>
+  <title>Laurent Andrés Fernández | Analista y desarrollador de software</title>
+  <meta name="description" content="Portafolio de Laurent Andrés Fernández, analista y desarrollador de software en NyGsoft S.A.S.">
+  <meta property="og:title" content="Laurent Andrés Fernández">
+  <meta property="og:description" content="Analista y desarrollador de software.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1B1A3A">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="assets/img/laurent.jpg">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="nav">
-    <a href="#inicio" class="logo">Andrés</a>
-    <nav>
-      <a href="#sobre-mi">Sobre mí</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#contacto">Contacto</a>
+  <a class="saltar" href="#contenido" data-i18n="skip">Saltar al contenido</a>
+
+  <header class="barra">
+    <a class="barra__nombre" href="#inicio">Laurent Fernández</a>
+    <nav class="barra__nav" aria-label="Principal" data-i18n-attr="aria-label:nav.label">
+      <a href="#sobre-mi" data-i18n="nav.about">Sobre mí</a>
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+      <a href="#contacto" data-i18n="nav.contact">Contacto</a>
     </nav>
+    <button class="idioma" type="button" aria-label="Cambiar a inglés" data-i18n-attr="aria-label:lang.switch">
+      <span class="idioma__opcion" data-idioma="es" aria-hidden="true">ES</span>
+      <span class="idioma__opcion" data-idioma="en" aria-hidden="true">EN</span>
+    </button>
   </header>
 
-  <main>
-    <section id="inicio" class="hero">
-      <p class="saludo">Hola, soy</p>
-      <h1>Andrés</h1>
-      <p class="rol">Desarrollador</p>
-      <a href="#proyectos" class="boton">Ver mis proyectos</a>
+  <main id="contenido">
+    <section id="inicio" class="inicio" data-fondo="tinta" data-texto="papel">
+      <h1 class="sr-only">Laurent Andrés Fernández</h1>
+
+      <svg class="inicio__mascara inicio__mascara--ancha" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" data-centro="430" aria-hidden="true" focusable="false">
+        <defs>
+          <mask id="mascara-ancha" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900">
+            <rect width="1600" height="900" fill="#000" />
+            <g class="inicio__letras" fill="#fff">
+              <text class="inicio__linea" x="800" y="500" font-size="467" text-anchor="middle">LAURENT</text>
+              <text class="inicio__linea" x="800" y="700" font-size="210" text-anchor="middle">ANDRÉS FERNÁNDEZ</text>
+            </g>
+            <rect class="inicio__relleno" width="1600" height="900" fill="#fff" opacity="0" />
+          </mask>
+        </defs>
+        <g mask="url(#mascara-ancha)">
+          <image class="inicio__foto" href="assets/img/laurent.jpg" x="0" y="0" width="1600" height="1600" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+
+      <svg class="inicio__mascara inicio__mascara--alta" viewBox="0 0 900 1600" preserveAspectRatio="xMidYMid slice" data-centro="560" aria-hidden="true" focusable="false">
+        <defs>
+          <mask id="mascara-alta" maskUnits="userSpaceOnUse" x="0" y="0" width="900" height="1600">
+            <rect width="900" height="1600" fill="#000" />
+            <g class="inicio__letras" fill="#fff">
+              <text class="inicio__linea" x="450" y="430" font-size="263" text-anchor="middle">LAURENT</text>
+              <text class="inicio__linea" x="450" y="700" font-size="306" text-anchor="middle">ANDRÉS</text>
+              <text class="inicio__linea" x="450" y="900" font-size="204" text-anchor="middle">FERNÁNDEZ</text>
+            </g>
+            <rect class="inicio__relleno" width="900" height="1600" fill="#fff" opacity="0" />
+          </mask>
+        </defs>
+        <g mask="url(#mascara-alta)">
+          <image class="inicio__foto" href="assets/img/laurent.jpg" x="-350" y="0" width="1600" height="1600" preserveAspectRatio="xMidYMid slice" />
+        </g>
+      </svg>
+
+      <div class="inicio__velo" aria-hidden="true"></div>
+      <p class="inicio__rol" data-i18n="hero.role">Analista y desarrollador de software</p>
     </section>
 
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>Escribe aquí una breve descripción sobre ti, tu experiencia y lo que te apasiona.</p>
-      <ul class="habilidades">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-      </ul>
-    </section>
+    <div class="recorrido">
+      <div class="ruta" aria-hidden="true"><span class="ruta__trazo"></span></div>
 
-    <section id="proyectos">
-      <h2>Proyectos</h2>
-      <div class="grid">
-        <article class="tarjeta">
-          <h3>Proyecto 1</h3>
-          <p>Descripción corta del proyecto.</p>
-          <a href="#">Ver más →</a>
-        </article>
-        <article class="tarjeta">
-          <h3>Proyecto 2</h3>
-          <p>Descripción corta del proyecto.</p>
-          <a href="#">Ver más →</a>
-        </article>
-        <article class="tarjeta">
-          <h3>Proyecto 3</h3>
-          <p>Descripción corta del proyecto.</p>
-          <a href="#">Ver más →</a>
-        </article>
-      </div>
-    </section>
+      <section id="sobre-mi" class="sobre" data-fondo="papel" data-texto="tinta">
+        <h2 class="titulo-seccion" data-i18n="about.title">Sobre mí</h2>
+        <p class="sobre__lead" data-i18n="about.lead">Soy analista y desarrollador de software en NyGsoft S.A.S., una empresa colombiana de software a la medida. Participo en los proyectos desde el levantamiento de requerimientos hasta el desarrollo.</p>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>¿Quieres trabajar conmigo? Escríbeme.</p>
-      <form id="form-contacto">
-        <input type="text" name="nombre" placeholder="Tu nombre" required>
-        <input type="email" name="email" placeholder="Tu correo" required>
-        <textarea name="mensaje" rows="4" placeholder="Tu mensaje" required></textarea>
-        <button type="submit" class="boton">Enviar</button>
-        <p id="form-estado" hidden></p>
-      </form>
-    </section>
+        <dl class="sobre__datos">
+          <div class="sobre__dato">
+            <dt data-i18n="about.analysis.t">Análisis</dt>
+            <dd data-i18n="about.analysis.d">Levantamiento y análisis de requerimientos, modelado y documentación de soluciones.</dd>
+          </div>
+          <div class="sobre__dato">
+            <dt data-i18n="about.dev.t">Desarrollo</dt>
+            <dd data-i18n="about.dev.d">Construcción y mantenimiento de aplicaciones web.</dd>
+          </div>
+          <div class="sobre__dato">
+            <dt data-i18n="about.edu.t">Formación</dt>
+            <dd data-i18n="about.edu.d">Tecnólogo en Análisis y Desarrollo de Software (SENA). Actualmente estudio Ingeniería de Software.</dd>
+          </div>
+          <div class="sobre__dato">
+            <dt data-i18n="about.tech.t">Tecnologías</dt>
+            <dd>
+              <ul class="tecnologias">
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>Laravel</li>
+                <li>Node.js</li>
+                <li>React</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>SQL</li>
+                <li>Git</li>
+              </ul>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section id="proyectos" class="proyectos" aria-labelledby="titulo-proyectos">
+        <div class="proyectos__cabecera" data-fondo="papel" data-texto="tinta">
+          <h2 id="titulo-proyectos" class="titulo-seccion" data-i18n="projects.title">Proyectos</h2>
+          <p data-i18n="projects.intro">Sistemas en los que he participado en NyGsoft, mi proyecto de grado y el sitio con el que empecé.</p>
+          <p class="nota" data-i18n="projects.note">Kurabi, GPSIntegra y Kas son sistemas de NyGsoft S.A.S. y de sus clientes. Aquí describo mi participación en ellos.</p>
+        </div>
+
+        <article class="escena" data-fondo="coral" data-texto="tinta">
+          <div class="escena__titulo"><h3 class="escena__nombre">Kurabi</h3></div>
+          <div class="escena__cuerpo">
+            <span class="parada" aria-hidden="true"></span>
+            <p class="escena__tipo" data-i18n="kurabi.type">Sistema de gestión de salud</p>
+            <dl class="ficha">
+              <div><dt data-i18n="label.role">Mi participación</dt><dd data-i18n="role.both">Análisis y desarrollo</dd></div>
+              <div><dt data-i18n="label.context">Contexto</dt><dd data-i18n="context.nyg">Proyecto de NyGsoft S.A.S.</dd></div>
+            </dl>
+          </div>
+          <svg class="motivo" viewBox="0 0 400 160" aria-hidden="true" focusable="false">
+            <path pathLength="1" d="M0 90 H120 L140 60 L160 120 L185 20 L210 140 L230 90 H400" />
+          </svg>
+        </article>
+
+        <article class="escena" data-fondo="senal" data-texto="tinta">
+          <div class="escena__titulo"><h3 class="escena__nombre">GPSIntegra</h3></div>
+          <div class="escena__cuerpo">
+            <span class="parada" aria-hidden="true"></span>
+            <p class="escena__tipo" data-i18n="gps.type">Sistema de rastreo GPS</p>
+            <dl class="ficha">
+              <div><dt data-i18n="label.role">Mi participación</dt><dd data-i18n="role.both">Análisis y desarrollo</dd></div>
+              <div><dt data-i18n="label.context">Contexto</dt><dd data-i18n="context.nyg">Proyecto de NyGsoft S.A.S.</dd></div>
+            </dl>
+          </div>
+          <svg class="motivo" viewBox="0 0 400 160" aria-hidden="true" focusable="false">
+            <circle pathLength="1" cx="200" cy="80" r="14" />
+            <circle pathLength="1" cx="200" cy="80" r="40" />
+            <circle pathLength="1" cx="200" cy="80" r="70" />
+          </svg>
+        </article>
+
+        <article class="escena" data-fondo="ambar" data-texto="tinta">
+          <div class="escena__titulo"><h3 class="escena__nombre">Kas</h3></div>
+          <div class="escena__cuerpo">
+            <span class="parada" aria-hidden="true"></span>
+            <p class="escena__tipo" data-i18n="kas.type">Sistema web de logística y carga</p>
+            <dl class="ficha">
+              <div><dt data-i18n="label.role">Mi participación</dt><dd data-i18n="role.analysis">Análisis</dd></div>
+              <div><dt data-i18n="label.context">Contexto</dt><dd data-i18n="context.nyg">Proyecto de NyGsoft S.A.S.</dd></div>
+            </dl>
+          </div>
+          <svg class="motivo" viewBox="0 0 400 160" aria-hidden="true" focusable="false">
+            <circle pathLength="1" cx="20" cy="130" r="8" />
+            <path pathLength="1" d="M28 130 C90 130 90 40 170 40 S250 120 300 120 S350 60 372 38" />
+            <circle pathLength="1" cx="378" cy="32" r="8" />
+          </svg>
+        </article>
+
+        <article class="escena" data-fondo="lima" data-texto="tinta">
+          <div class="escena__titulo"><h3 class="escena__nombre">SIPSG</h3></div>
+          <div class="escena__cuerpo">
+            <span class="parada" aria-hidden="true"></span>
+            <p class="escena__tipo" data-i18n="sipsg.type">Sistema de inventario y punto de venta</p>
+            <dl class="ficha">
+              <div><dt data-i18n="label.role">Mi participación</dt><dd data-i18n="sipsg.role">Adaptación y desarrollo</dd></div>
+              <div><dt data-i18n="label.context">Contexto</dt><dd data-i18n="sipsg.context">Proyecto de grado, Tecnólogo SENA</dd></div>
+              <div><dt data-i18n="label.tech">Tecnologías</dt><dd>Laravel, PHP, MySQL, JavaScript</dd></div>
+            </dl>
+            <p class="escena__texto" data-i18n="sipsg.text">Partí de un sistema de inventario open source hecho en Laravel y lo adapté y modifiqué para mi proyecto de grado.</p>
+            <ul class="enlaces">
+              <li><a href="https://github.com/LaurentFernandez/sipsgBeta" target="_blank" rel="noopener noreferrer" data-i18n="link.code">Ver código</a></li>
+              <li><a href="https://github.com/fajarghifar/inventory-management-system" target="_blank" rel="noopener noreferrer" data-i18n="sipsg.original">Proyecto original</a></li>
+            </ul>
+          </div>
+          <svg class="motivo" viewBox="0 0 400 160" aria-hidden="true" focusable="false">
+            <rect pathLength="1" x="120" y="100" width="70" height="50" />
+            <rect pathLength="1" x="200" y="100" width="70" height="50" />
+            <rect pathLength="1" x="160" y="40" width="70" height="50" />
+          </svg>
+        </article>
+
+        <article class="escena" data-fondo="papel" data-texto="tinta">
+          <div class="escena__titulo"><h3 class="escena__nombre">Transmark</h3></div>
+          <div class="escena__cuerpo">
+            <span class="parada" aria-hidden="true"></span>
+            <p class="escena__tipo" data-i18n="transmark.type">Sitio web de práctica</p>
+            <dl class="ficha">
+              <div><dt data-i18n="label.context">Contexto</dt><dd data-i18n="transmark.context">Uno de mis primeros proyectos, en 2023</dd></div>
+              <div><dt data-i18n="label.tech">Tecnologías</dt><dd>HTML, CSS</dd></div>
+            </dl>
+            <ul class="enlaces">
+              <li><a href="https://laurentfernandez.github.io/transmark/" target="_blank" rel="noopener noreferrer" data-i18n="link.site">Ver sitio</a></li>
+              <li><a href="https://github.com/LaurentFernandez/transmark" target="_blank" rel="noopener noreferrer" data-i18n="link.code">Ver código</a></li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <section id="contacto" class="contacto" data-fondo="tinta" data-texto="papel">
+        <h2 class="contacto__titulo" data-i18n="contact.title">¿Hablamos?</h2>
+        <p class="contacto__texto" data-i18n="contact.text">Estoy abierto a ofertas de empleo y a proyectos freelance.</p>
+        <div class="contacto__acciones">
+          <span class="parada" aria-hidden="true"></span>
+          <a class="boton" id="enlace-correo" href="https://www.linkedin.com/in/andr%C3%A9s-fernandez-413098213" data-i18n="contact.write">Escríbeme</a>
+          <button class="boton boton--borde" type="button" id="copiar-correo" data-i18n="contact.copy" hidden>Copiar correo</button>
+        </div>
+        <p class="contacto__correo" id="texto-correo" hidden></p>
+        <p class="contacto__estado" id="estado-copia" role="status"></p>
+        <ul class="contacto__redes">
+          <li><a href="https://www.linkedin.com/in/andr%C3%A9s-fernandez-413098213" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/LaurentFernandez" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        </ul>
+      </section>
+    </div>
   </main>
 
-  <footer>
-    <p>© <span id="anio"></span> Andrés. Todos los derechos reservados.</p>
+  <footer class="pie">
+    <p>© <span id="anio">2026</span> Laurent Andrés Fernández</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="assets/vendor/gsap.min.js" defer></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="i18n.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
