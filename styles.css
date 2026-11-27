@@ -786,6 +786,11 @@ html[lang="en"] .idioma__opcion[data-idioma="en"] {
   background: var(--mundo);
 }
 
+/* Con el interlineado apretado de los títulos, la virgulilla de la Ñ quedaría fuera de la caja. */
+.escena--disenador .escena__nombre {
+  padding-top: 0.12em;
+}
+
 .escena--marca .escena__nombre {
   padding-bottom: 0.12em;
   font-family: var(--fuente-marca);
